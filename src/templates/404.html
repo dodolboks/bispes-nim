@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %} Ga boleh diakses {% endblock %}
+{% block meta %}
+<meta name="theme-color" content="#FFFFFF" />
+{% endblock %}
+{% block css %} 
+<style>
+
+.img-close{margin-top:20px; display:block; margin-left:20px}
+.img-close a{color:#fff; font-size:24px}
+form{background:inherit; border: none; }
+.title-atas{color:#fff; font-weight:900; font-size:24px; margin-top:20px}
+.upload-image{
+position: absolute;
+width: 174px;
+height: 152px;
+left: 108px;
+top: 120px;
+border-radius:10px;
+background: #C4C4C4;
+}
+.upload-image .fa-camera{
+	font-size:40px;
+color: #FFFFFF;
+position: absolute;
+width: 40px;
+height: 40px;
+left: 65px;
+top: 60px;
+}
+.mdl-textfield{width:100%}
+.card2 {
+ background: #FFFFFF;
+border: 1px solid #ddd;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 4px;
+min-height:160px;
+font-weight:200;
+font-size:14px;
+width:100%;
+margin-bottom:10px;
+margin-top:-120px
+}
+footer{display:none} .btn-ok{position: fixed; bottom:10px; margin-bottom:0px}
+h3{text-align: center;margin: 0px;
+    text-align: center;
+    font-size: 1.6rem;
+    padding: 0px;}
+p{text-align:center}	
+</style>
+<script>
+
+{% if ulangi %}
+let paksa_login = true 
+{% else %}
+let paksa_login = false 
+{% endif %}
+
+
+var ddd = "{{ ulangi }}"
+</script>
+{% endblock %}
+
+{% block content %} 
+
+<div class="container">	
+	<div class="row">
+		<br><br>
+   <p align="center">
+   <img src="/static/img/larisse_login_img.svg" alt="larise login" id="larisse-img" /> </p>
+   <div class="col-sm-12">
+    <p align="center">   <h2 align="center">404</h2></p>
+    <p align="center">   <h3>Halaman Tidak Ditemukan</h3></p>
+  </div>
+			<a href="/web/" class="btn-ok" style="color:#fff; padding:10px; bottom:20px">Kembali</a>
+		</div>		
+
+</div>
+ {% endblock %}
+
+ {% block js %} 
+ <script>
+	document.querySelector('meta[name="theme-color"]').setAttribute('content',  '#f8f8f8');
+  	function hideYo(){
+      $("a#mane").hide();
+    }
+    $("#telp").keyup(function () {
+        this.value = this.value.replace(/\D/g,'') 
+    });    
+
+	
+    function myFunction() {
+  		let tep = document.getElementById("telp").value;
+  		
+}
+  
+ </script>
+
+
+ {% endblock %}

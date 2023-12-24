@@ -1,0 +1,67 @@
+{% extends "templates/base.html" %}
+{% block title %} OTP {% endblock %}
+{% block content %}
+  <main class="container">
+    <article class="grid">
+      <div>
+        <hgroup>
+          <h1>OTP </h1>
+          <h2>Verify otp yang sudah kami kirim melalui sms</h2>
+        </hgroup>
+        
+        
+          <div class="did-floating-label-content">
+              <input class="did-floating-input" type="text" type="number"
+                name="number"
+                placeholder=" "
+                id="verify"
+                required>
+          <label class="did-floating-label">Kode OTP</label>
+        </div>
+          
+          <button onclick="submitPost()">Verify</button>
+        
+      </div>
+      <div></div>
+    </article>
+  </main>
+{% endblock %}
+
+{% block extra_js %} 
+<script>
+
+async function submitPost() {
+  const otp = document.querySelector('input').value
+  console.log(otp)
+  const verify = {
+    verify: otp
+  }
+  const ff = await fetch('/login/otp/verify/', {
+    method: "POST",
+    body: JSON.stringify(verify),
+    headers: {"Content-type": "application/json; charset=UTF-8"}
+  })
+  const data = await ff.json()
+  console.log(data)
+  if (data.status === "success") {
+    if (data.data.phone) {
+      await localStorage.setItem("authPhone", data.data.phone);
+    }
+    if (data.data.uuid) {
+      await localStorage.setItem("authUUID", data.data.uuid);
+    }
+    if (data.data.jwt) {
+      await localStorage.setItem("authToken", data.data.jwt);
+    }
+    window.location = "/"
+
+  } else {
+    Swal.fire({
+      icon: 'error',
+      title: 'Kode Salah',
+      text: 'Kode yang anda masukan salah.'
+    })
+  }
+}
+</script>
+{% endblock %}

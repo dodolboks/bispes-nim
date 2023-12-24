@@ -1,0 +1,538 @@
+.card,
+.price-des {
+  font-weight: 200;
+  font-size: 14px;
+}
+.card,
+.coverphoto {
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+  width: 100%;
+}
+.price-des {
+  color: rgba(0, 0, 0, 0.7);
+}
+.coverphoto {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  webkit-clip-path: ellipse(100% 80% at 60% 20%);
+  clip-path: ellipse(100% 80% at 50% 10%);
+}
+.btn-menu,
+.card {
+  background: #fff;
+}
+body {
+  font-family: Roboto, sans-serif;
+}
+.card {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  height: 150px;
+  margin-top: -130px;
+}
+.daftarbrodcast {
+  margin-left: 10px;
+  float: left;
+  display: block;
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 90%;
+  border-radius: 6px;
+  font-size: 18px;
+  margin-top: 10px;
+}
+.btn-menu,
+header h7 {
+  font-size: 1.2rem;
+  color: #fff;
+}
+.daftarbrodcast p {
+  font-size: 16px;
+  margin-top: 10px;
+  line-height: 10px;
+}
+.btn-menu {
+  width: 95%;
+  display: block;
+  border: 2px solid #263484;
+  text-align: center;
+  padding: 1.2rem 0;
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  box-shadow: #3b4fbd 4px 4px 0 0;
+}
+.btn-big,
+a.addpemasukan:visited,
+a.btn-big:visited {
+  color: #eee;
+}
+.btn-bottom {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  right: 15px;
+  bottom: 20px;
+  border-radius: 50%;
+  background: #eb5757;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.kiri {
+  float: left;
+}
+.kanan,
+.title-menu-opsi .fas {
+  float: right;
+}
+.menu-head {
+  margin-top: 20px;
+  display: block;
+  margin-botom: 10px;
+}
+#gopaymodal,
+#myCatat,
+#myDateset,
+#myForm,
+#myFormDiskon,
+#myFormQr,
+#myKategoriBaru,
+#myKontak,
+#myPengeluaran,
+#myPengeluaranTipe,
+#ovomodal,
+.qty-produk {
+  display: none;
+}
+.menu-head a {
+  padding: 8px 13px;
+  float: left;
+  color: #fff;
+}
+.btn-big {
+  background: #3b4fbd;
+  width: 94%;
+  text-align: center;
+  float: left;
+  border-radius: 10px;
+  padding: 15px 0;
+  margin-top: 15px;
+  margin-left: 3%;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+}
+.kotak {
+  background: #ccc;
+  border-radius: 4px;
+  height: 120px;
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.minidate {
+  font-size: 12px;
+}
+@media screen and (min-width: 320px) {
+  .card {
+    max-width: 98%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .minidate {
+    line-height: 0;
+  }
+  .infojual {
+    text-align: left;
+  }
+}
+.qty-produk,
+a.btn-inactive {
+  text-align: center;
+  float: left;
+}
+.hargatotal,
+.itemtotal,
+h7 {
+  font-size: 1.1rem;
+  color: #4f4f4f;
+  margin-top: 20px;
+  float: left;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+h7 a {
+  color: #3b4fbd;
+}
+header h7 {
+  margin-left: 0;
+  margin-right: 0;
+}
+a.btn-inactive {
+  background: #c4c4c4;
+  border-radius: 6px;
+  display: initial;
+  padding: 10px;
+  margin: 10px;
+  width: 86%;
+  color: #848484;
+}
+a.btn-on {
+  background: #3b4fbd;
+  color: #fff;
+}
+.title-produk {
+  margin-top: -65px;
+  height: 50px;
+  width: 92%;
+  float: left;
+  background: #222;
+  color: #fff;
+  padding: 4%;
+}
+.title-produk p {
+  margin: 0;
+}
+.qty-produk {
+  margin: -125px auto 0 30%;
+  background: #fff;
+  color: #08a;
+  border-radius: 50%;
+  padding: 5px 18px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.title-hed,
+.title-menu-opsi a,
+.title-menu-opsi2 a {
+  color: #222;
+}
+.form-container {
+  min-height: 400px;
+  padding: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  position: fixed;
+}
+.card3,
+.card4 {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.form-container input[type="number"],
+.form-container input[type="password"],
+.form-container input[type="text"] {
+  width: 100%;
+  margin: 5px 0 22px;
+  border: none;
+  background: #f1f1f1;
+}
+.form-container input[type="password"]:focus,
+.form-container input[type="text"]:focus {
+  outline: 0;
+}
+.form-container .btn {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+.form-container .cancel {
+  background-color: red;
+}
+.form-container .btn:hover,
+.open-button:hover {
+  opacity: 1;
+}
+.img-close {
+  font-size: 2rem;
+  margin-top: 25px;
+  margin-bottom: 0;
+}
+.hargatotal {
+  margin-top: 20px;
+  font-size: 26px;
+  margin-left: 20px;
+}
+.title-hed {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 21px;
+  margin-top: 25px;
+}
+.title-menu-opsi,
+.title-menu-opsi2 {
+  color: #222;
+  position: relative;
+  margin-top: 10px;
+  float: left;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.title-menu-opsi p {
+  margin: 0;
+  padding: 0;
+  line-height: 0.55;
+  font-size: 14px;
+  font-weight: 900;
+}
+.title-des,
+.title-menu-opsi small {
+  font-weight: 200;
+}
+.title-menu-opsi i,
+.title-menu-opsi2 i {
+  font-size: 1.4rem;
+  float: right;
+}
+.title-des {
+  font-size: 13px;
+  color: #444;
+}
+.title-menu-opsi2 p {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-size: 16px;
+  font-weight: 900;
+}
+.card-des2 h7,
+.card3,
+.card4,
+.card5 {
+  margin-bottom: 10px;
+}
+.card3,
+.card4,
+.card5,
+.title-menu-opsi2 small {
+  font-weight: 200;
+  font-size: 14px;
+}
+.title-menu-opsi2 .col-sm-12 {
+  margin-bottom: 20px;
+}
+.coverphoto {
+  height: 200px;
+  background-color: #5e81ac;
+}
+.card-des2,
+.card4 {
+  background: #fff;
+  width: 100%;
+}
+h6 {
+  font-weight: 900;
+  margin: 0 10px 5px;
+}
+.card-des2 h7,
+.card4 h7,
+h3 {
+  font-weight: 700;
+}
+.card4 {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  min-height: 235px;
+  padding: 0;
+  color: #262626;
+}
+.card4 img {
+  border-radius: 1rem;
+  width: 100%;
+  height: 100%;
+  float: left;
+}
+.card4 p {
+  margin-top: 10px;
+  float: left;
+  position: absolute;
+  top: 10px;
+  background: #222;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 20px;
+}
+.card3 {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  min-height: 180px;
+  width: 100%;
+  padding: 0 10px;
+}
+.card-des2 {
+  margin-left: 0;
+  padding: 5px;
+  color: #fff;
+  height: 60px;
+  margin-top: -30px;
+}
+#addpengeluaran,
+.addpemasukan {
+  position: fixed;
+  padding: 1rem 0;
+  bottom: 6rem;
+  width: 44%;
+  border-radius: 20px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  color: #fff;
+  text-align: center;
+}
+.card-des2 h7 {
+  display: block;
+  margin-top: 25px;
+  font-size: 14px;
+  width: 100%;
+  color: #222;
+  line-height: 15px;
+}
+.card2 p {
+  color: #999;
+}
+#addpengeluaran {
+  background: #ff6584;
+  right: 5%;
+}
+.addpemasukan {
+  background: #5e81ac;
+  left: 5%;
+}
+.form-container input[type="number"]:focus,
+.form-container input[type="password"]:focus,
+.form-container input[type="text"]:focus,
+.promo-btn {
+  background-color: #fff;
+}
+.card5 {
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  min-height: 44px;
+  width: 95%;
+  padding-top: 10px;
+  padding-left: 4%;
+}
+.card5 .icon {
+  margin-right: 20px;
+  margin-top: 5px;
+  float: left;
+}
+.form-popup {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+}
+.pull-right {
+  float: right;
+  display: inline;
+}
+.pull-left {
+  float: left;
+  display: inline;
+}
+.mdl-chip__text {
+  font-size: 13px;
+  vertical-align: middle;
+  display: inline-block;
+  margin-top: -10px;
+}
+.detail-kabar {
+  border: 1px solid #eee;
+  padding: 3px 20px;
+  color: #fff;
+  margin-top: 15px;
+  float: left;
+  border-radius: 20px;
+}
+.infojual {
+  border: 1px solid #aaa;
+  border-top: none;
+  padding: 1rem;
+  margin: -6px 8px 8px;
+}
+.infojual:first-child {
+  border-top: 1px solid #aaa;
+  margin-top: 10px;
+}
+.promo-btn {
+  border: 1px solid var(--a-visited-color);
+  width: 100%;
+  float: left;
+  margin-bottom: 10px;
+  text-align: center;
+  border-radius: 30px;
+  padding: 5px 0;
+  margin-top: 5px;
+}
+.promo-btn i {
+  font-size: 16px;
+}
+.form-container input[type="number"],
+.form-container input[type="password"],
+.form-container input[type="text"] {
+  background-color: #fff;
+  margin-bottom: 0;
+  padding: 10px 0;
+  border-bottom: 1px solid #222;
+}
+.small,
+.small-kunjungan,
+.small-transaksi {
+  margin-top: -10px;
+  line-height: 14px;
+  float: left;
+  font-size: 12px;
+  margin-bottom: 15px;
+  color: #414347;
+}
+.gantidiskon,
+.gantiharga {
+  border-radius: 30px;
+  background-color: #3b4fbd;
+  color: #fff;
+  position: absolute;
+  right: 0;
+  bottom: 30px;
+  padding: 2px 8px;
+}
+a.gantidiskon:visited,
+a.gantiharga:visited {
+  color: #fff;
+}
+input:not([type="button"]):not([type="submit"]):not(
+    [type="reset"]
+  ):focus:invalid,
+input:not([type="button"]):not([type="submit"]):not([type="reset"]):invalid,
+select:focus:invalid,
+select:invalid,
+textarea:focus:invalid,
+textarea:invalid {
+  border-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+.mdl-textfield--floating-label.is-invalid .mdl-textfield__label {
+  font-size: 16px;
+  color: #2e3440;
+}
+.mdl-textfield--floating-label.has-placeholder .mdl-textfield__label,
+.mdl-textfield--floating-label.is-dirty .mdl-textfield__label,
+.mdl-textfield--floating-label.is-focused .mdl-textfield__label {
+  color: #3f51b5;
+  font-size: 1.2rem;
+  top: 4px;
+  visibility: visible;
+  padding: 0;
+  font-weight: 700;
+}
+.mdl-textfield.is-invalid .mdl-textfield__label:after {
+  background-color: #3f51b5;
+}

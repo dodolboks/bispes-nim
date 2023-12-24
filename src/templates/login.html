@@ -1,0 +1,248 @@
+{% extends "templates/base.html" %}
+{% block title %} Login {% endblock %}
+{% block meta %}
+<meta name="theme-color" content="#FFFFFF" />
+{% endblock %}
+{% block css %} 
+<style>
+
+.img-close{margin-top:20px; display:block; margin-left:0px}
+.img-close a{color:#fff; font-size:24px}
+form{background:inherit; border: none; }
+.title-atas{color:#fff; font-weight:900; font-size:24px; margin-top:20px}
+.upload-image{
+position: absolute;
+width: 174px;
+height: 152px;
+left: 108px;
+top: 120px;
+border-radius:10px;
+background: #C4C4C4;
+}
+.upload-image .fa-camera{
+	font-size:40px;
+color: #FFFFFF;
+position: absolute;
+width: 40px;
+height: 40px;
+left: 65px;
+top: 60px;
+}
+.mdl-textfield{width:100%}
+.card2 {
+ background: #FFFFFF;
+border: 1px solid #ddd;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 4px;
+min-height:160px;
+font-weight:200;
+font-size:14px;
+width:100%;
+margin-bottom:10px;
+margin-top:-120px
+}
+footer{display:none} .btn-ok{position: fixed; bottom:10px; margin-bottom:0px}
+h3{text-align: left;margin: 0px;
+    font-size: 1.6rem;
+    padding: 0px;
+    margin-bottom:30px;
+    font-weight: 900;
+  }
+p{text-align:center}	
+#myVerifi{display: none;}
+</style>
+<script>
+
+{% if ulangi %}
+let paksa_login = true 
+{% else %}
+let paksa_login = false 
+{% endif %}
+
+
+var ddd = "{{ ulangi }}"
+</script>
+{% endblock %}
+
+{% block content %} 
+
+<div class="container">	
+	<div class="row">
+    <p align="center">
+    <img src="/static/img/larisse_login_img.svg" alt="larise login" id="larisse-img" width="339px" height="139px"/> </p>
+    <div class="col-sm-12">
+      <p align="center">   <h3>Masuk Dulu </h3></p>
+    </div>
+			
+	  <div class="row">
+		<div class="col-sm-12">
+  		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    		<input class="mdl-textfield__input" type="text" id="phone" name="phone" {% if telp %} value="{{ telp }}" {% endif %}>
+    		<label class="mdl-textfield__label" for="store">No Telp Aktif </label>
+  		</div>	
+		</div>	
+		<p>
+			  {% if domain == "bispes.me" or domain == "127.0.0.1:8001" %}	
+           	Biar jualanmu <strong>Aman & Nyaman</strong>. Silahkan masukan no Telp mu yang aktif
+		    {% else %}
+				    Biar poin dan pesananmu aman. Masukin no Telp Yang Aktif. Hanya bisa menggunakan nomor Indonesia
+		    {% endif %}
+    </p>
+    <div id="recaptcha-container"></div>
+		<button class="btn-ok" onclick="sendOTP()" id="sendSMS">Kirim SMS</button>
+    </div>      
+	</div>		
+</div>
+<div class="form-popup" id="myVerifi">
+	<div class="form-container" style="min-height:100vh; position: fixed; width:100%">
+		<div class="container">
+			<div class="row">
+		  		<div class="col-sm-12">
+			 		  <div class="img-close">
+				   		<a href="/web/sms/login/"><i class="material-icons" style="color:#444">close</i></a>
+			  		</div>	 
+		  		</div>
+		  		<div class="col-sm-11">
+            <h3>Verifikasi</h3><br>
+			  		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    				  <input class="mdl-textfield__input" type="text" id="otp" name="otp">
+    				  <label class="mdl-textfield__label" for="store">Kode OTP</label>
+    				</div>	
+            <p>
+            Masukan kode otp yang telah kami kirim ke no Telp mu
+            </p>
+            <button class="btn-ok" onclick="verifyOTP()" id="sendVerify">Verify OTP</button>
+		  		</div>
+			</div>
+		</div>
+  </div>
+</div>
+<div class="hide">
+  <form action="." method="POST" id="postLogin">{% csrf_token %}
+    <input type="hidden" id="telpHidden" name="telp">
+    <input type="hidden" id="kodepHidden" name="kode">
+    <input type="hidden" id="creHidden" name="credential">
+  </form>
+</div>
+ {% endblock %}
+
+ {% block js %} 
+ <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+
+<script>
+  const form = document.getElementById('postLogin');
+	document.querySelector('meta[name="theme-color"]').setAttribute('content',  '#f8f8f8');
+  	function hideYo(){
+      $("a#mane").hide();
+    }
+    const telpInput = document.getElementById("telp");
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCiG0rep6SENgrdG6-wk9pIFGp66qh5pyw",
+  authDomain: "pesenmakan-f1c5a.firebaseapp.com",
+  databaseURL: "https://pesenmakan-f1c5a.firebaseio.com",
+  projectId: "pesenmakan-f1c5a",
+  storageBucket: "pesenmakan-f1c5a.appspot.com",
+  messagingSenderId: "1052404902062",
+  appId: "1:1052404902062:web:0a7af40db5a32d6167e53f",
+  measurementId: "G-SQ6T1S7Q5J"
+};
+firebase.initializeApp(firebaseConfig);
+function formatPhoneNumber(phoneNumber) {
+  return phoneNumber.replace(/\D/g, '');
+}
+function replacePhoneNumber(phoneNumber) {
+  if (phoneNumber.startsWith('62')) {
+    return '+' + phoneNumber
+  }else {
+    return '+62' + phoneNumber.substr(1);
+  }
+}
+function sendOTP() {
+  let phoneNumber = document.getElementById("phone").value;
+  phoneNumber = formatPhoneNumber(phoneNumber)
+  phoneNumber = replacePhoneNumber(phoneNumber)
+  console.log(phoneNumber)
+  const appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+  btnSend = document.getElementById("sendSMS")
+  btnSend.style.display = 'none';
+  firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+    .then(function (confirmationResult) {
+     
+      window.confirmationResult = confirmationResult;
+      // disini bisa di tampilkan halamannya
+      document.getElementById("recaptcha-container").style.display = 'none';
+      form.elements['telp'].value = phoneNumber;
+      console.log("OTP sent");
+      openModal('myVerifi')
+    }).catch(function (error) {
+      // Error; SMS not sent
+      console.error("Error sending OTP: ", error);
+    });
+}
+function verifyOTP() {
+  var code = document.getElementById("otp").value;
+  
+  confirmationResult.confirm(code).then(function (result) {
+    // User signed in successfully
+    console.log(result.user.refreshToken)
+    form.elements['kode'].value = code;
+    form.elements['credential'].value = result.user.refreshToken
+    console.log("OTP verified");
+    closeModal('myVerifi')
+    console.log(result);
+    showLoading();
+    form.submit();
+  }).catch(function (error) {
+    // Error; OTP verification failed
+    Swal.fire({
+      icon: 'warning',
+      title: 'OTP CODE SALAH',
+      text: 'Masukan kode OTP yang sudah kami kirimkan',
+    });
+  });
+}
+// Define a function to validate the form before submitting
+function validateForm() {
+  // Get the value of the "telp" input field
+  const formattedValue = telpInput.value.replace(/\D/g, "");
+  const telpValue = formattedValue.trim();
+
+  // Check if the "telp" input field is empty
+  if (telpValue === "" || telpValue.length < 10) {
+    // Show a SweetAlert2 alert if the input field is empty
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Nomor harus diisi dengan benar ya ka',
+    });
+	$(".modal").hide();
+    return false; // Prevent the form from submitting
+  }
+  $(".modal").show();
+  // If the form is valid, allow it to submit
+  return true;
+}
+
+// Add an event listener to the form to validate it before submitting
+
+$("form#loginSms").submit(function(){
+	
+    return validateForm()
+
+}); 
+{% if telp %}
+  $("input#phone").focus()
+	$("input#phone").parent().attr("class", "mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-upgraded is-dirty")
+
+  {% endif %}
+
+ </script>
+
+
+ {% endblock %}

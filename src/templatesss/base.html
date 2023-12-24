@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bispes {% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="/static/css/extra.css">
+    {% block css %} {% endblock %}  
+  </head>
+  <body hx-boost="true">
+    <nav class="container-fluid">
+        <ul>
+          <li>
+            <a href="/" class="contrast" hx-get="/" hx-push-url="true" hx-target="body"><strong>Brand</strong></a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <details role="list" dir="rtl">
+              <summary aria-haspopup="listbox" role="link" class="secondary">Theme</summary>
+              <ul role="listbox">
+                <li><a href="#" data-theme-switcher="auto">Auto</a></li>
+                <li><a href="#" data-theme-switcher="light">Light</a></li>
+                <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details role="list" dir="rtl">
+              <summary aria-haspopup="listbox" role="link" class="secondary">Examples (v1)</summary>
+              <ul role="listbox">
+                <li><a href="../v1-preview/">Preview</a></li>
+                <li><a href="../v1-preview-rtl/">Right-to-left</a></li>
+                <li><a href="../v1-classless/">Classless</a></li>
+                <li><a href="../v1-basic-template/">Basic template</a></li>
+                <li><a href="../v1-company/">Company</a></li>
+                <li><a href="../v1-google-amp/">Google Amp</a></li>
+                <li><a href="../v1-sign-in/">Sign in</a></li>
+                <li><a href="../v1-bootstrap-grid/">Bootstrap grid</a></li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </nav>
+        {% block content %}{% endblock %}
+      
+    <footer class="container-fluid">
+      <div class="col-12 col-md-12">
+        <a href="/tentang/">Tentang Kami</a>
+        <a href="/kontak/">Hubungi Kami</a>
+        <a href="/terms/">Terms and Conditions</a>
+        
+        <a href="/privacy/">Privacy Policy</a>
+        <a href="https://api.whatsapp.com/send?phone=6285156369011" target="_blank" rel="noreferrer">Chat Kami</a>
+       
+      </div>
+      <small
+        >Dibuat di Indonesia <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"></path>
+        </svg></small
+      >
+    </footer>
+    <script src="https://unpkg.com/htmx.org@1.9.6" integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/ajax-header.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      // localStorage.setItem("lastname", "Smith");
+      let authToken = localStorage.getItem("authToken");
+      document.body.addEventListener('htmx:configRequest', (event) => {
+        evt.detail.headers['X-Requested-With'] = 'XMLHttpRequest';
+        if(authToken) {
+          event.detail.headers['Authorization'] = `Bearer ${authToken}`
+        }  
+      })
+      // htmx.defineExtension('auth-header', {
+      //  onEvent: function (name, evt) {
+      //    if(authToken) {
+      //      evt.detail.headers['Authorization'] = 'Barier ' + authToken;
+      //    }
+      //    evt.detail.headers['X-Requested-With'] = 'XMLHttpRequest';
+          
+      //  }
+      // });
+    </script>
+    {% block extra_js %} {% endblock %}
+  </body>
+</html>

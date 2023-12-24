@@ -1,0 +1,245 @@
+        <style>
+        .header{
+            width: 100%;
+height: 180px;
+left: 0px;
+top: 0px;
+padding:20px 0px;
+background: #3B4FBD;
+        }
+        .box-alert{
+            background: #EEEEEE;
+border: 0.5px solid #999999;
+box-sizing: border-box;
+border-radius: 4px;
+padding:20px 0px;
+margin-top:20px;
+}
+.box-alert-text, .small-text{
+    font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 14px;
+text-align: center;
+
+color: #999999;
+}
+
+.small-text{text-align:left; margin-left: 0px; }
+
+.card{
+background: #C4C4C4;
+box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+
+}
+
+        .title-price{
+	font-style: normal;
+	font-weight: 900;
+	font-size: 22px;
+	line-height: 35px;
+	color: #000;
+	margin-top:30px
+}
+.price-des{font-size:14px; color: rgba(0, 0, 0, 0.7); font-weight: 200;}
+.coverphoto{
+                height: 250px;
+                
+                background-color: #3B4FBD;
+                width:100%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: top;
+                background-color:#3B4FBD;
+                webkit-clip-path: ellipse(100% 80% at 60% 20%);
+    clip-path: ellipse(100% 80% at 50% 10%);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+
+                
+            }
+            .mdl-textfield--floating-label.is-focused .mdl-textfield__label, .mdl-textfield--floating-label.is-dirty .mdl-textfield__label, .mdl-textfield--floating-label.has-placeholder .mdl-textfield__label {
+    color: rgb(63,81,181);
+    font-size: 1.2rem;
+    top: 4px;
+    visibility: visible;
+    padding: 0px;
+    font-weight: 700;
+}
+.btn-ok{
+
+    background: #3B4FBD;
+    border: 1px solid #3B4FBD;
+    box-sizing: border-box;
+    border-radius: 2rem;
+    text-align: center;
+    color: #fff;
+    height: 50px;
+    width: 90%;
+    font-size: 1.3rem;
+    position: inline;
+    bottom: 20px;
+    margin: 0 auto;
+    font-weight: bold;
+    margin-bottom:10px
+}
+footer{position: fixed;
+    bottom: 0px;
+    width: 97%;
+    background:#F4F4F4; z-index:1;
+    max-width: 600px;
+    border-bottom:none;
+    border-top:1px solid rgb(230 226 226)
+   
+    }
+    
+footer p {
+    font-size: 0.9rem;
+    letter-spacing: 0;
+    margin: 0px;
+    text-align: center;
+    line-height: 15px;
+    color:#888888;
+    padding-top: 5px;
+}
+footer i{font-size:1.6rem}
+footer a{color:#666}
+footer a:visited{color:#666}
+footer a.on p{color:#3B4FBD}
+footer a.onx p{color:#fff}
+
+.mdl-textfield__input{margin-top:15px}
+button:hover, button:focus, [type="button"]:hover, [type="button"]:focus, [type="submit"]:hover, [type="submit"]:focus, [type="reset"]:hover, [type="reset"]:focus, a.button:hover, a.button:focus, label.button:hover, label.button:focus, .button:hover, .button:focus, a[role="button"]:hover, a[role="button"]:focus, label[role="button"]:hover, label[role="button"]:focus, [role="button"]:hover, [role="button"]:focus{color:#666}
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+.modal{display:block;    position: fixed;
+    top: 0;
+    left: 0;
+  z-index: 1200;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.74);
+}
+
+.modal-content{width: 50%;
+    display: flex;
+    flex: 0 1 auto;
+    margin: 0 auto;
+    margin-top: 50%;}
+    body{max-width:600px}
+body {
+   -webkit-user-select: none;
+
+-webkit-tap-highlight-color: transparent;
+
+-webkit-touch-callout: none;
+}
+header .im{font-size:1.2rem}
+.cardt{
+    margin: 0 auto;
+    background: #FFF;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    /* width: 50px; */
+    /* height: 50px; */
+    padding: 6px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+}
+.center-loader{margin:0 auto}
+.mdl-textfield__label{color:#2E3440; font-weight: 400;}
+.form-popup {
+  position: absolute;
+    top: 0;
+    right: 0px;
+    z-index: 9;
+    width: 100%;
+	height: 100%;
+}
+/* Add styles to the form container */
+.form-container {
+  min-height:1450px;
+  padding: 0px 20px;
+  background-color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  overflow: scroll;
+  height: 100%;
+}
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 0px 0;
+  border: none;
+  background: #f1f1f1;
+  
+}
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+#myForm, #myCatat, #myKontak, #myFormQr, #gopaymodal, #ovomodal, #myDateset, #myKategoriBaru, #myPengeluaran, #myPengeluaranTipe{display:none}
+.img-close{font-size: 2rem;
+    margin-top: 24px;
+    margin-bottom: 0px}
+.hargatotal{margin-top: 15px;
+    font-size: 18px;
+    margin-left: 10px;}	
+.form-container input[type=number]{
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+footer .onx{
+
+  background: #222;
+                    position: relative;
+                    padding: 11px 15px 11px 15px;
+                    float: left;
+                    color: #fff;
+                    margin-left: 5px;
+                    border-radius: 50%;
+                    
+}
+
+</style>

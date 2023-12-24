@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <title> {% block title %} {% endblock %} | Bispes </title>
+        <link rel="icon" type="image/x-icon" href="/static/logo/bispes-32.png">
+        <meta name="description" content="{{ store.title }}"/>
+        {% block theme %} {% endblock %}
+        <meta name="theme-color" content="#3B4FBD" />
+        <meta name="google" content="notranslate">
+
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=1.0" name="viewport">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+        <link rel="stylesheet" href="/static/css/extra.css">
+        <link rel="preload" href="https://unpkg.com/@glidejs/glide@3.4.1/dist/css/glide.core.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://unpkg.com/@glidejs/glide@3.4.1/dist/css/glide.core.min.css"></noscript>
+        
+        <link rel="preload" href="https://unpkg.com/@glidejs/glide@3.4.1/dist/css/glide.theme.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://unpkg.com/@glidejs/glide@3.4.1/dist/css/glide.theme.min.css"></noscript>
+        
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="manifest" href="/manifest.new.json">
+        {% block meta %}{% endblock %}     
+        <!-- Bootstrap CSS -->
+
+{% block css %} {% endblock %}
+<style>body{max-width: 480px; margin:0 auto} footer{max-width: 480px;}
+td.hideonmobile{display: none;}
+@media (prefers-color-scheme: dark) {
+  footer{background-color: #0c0d0d; border-top:1px solid rgb(40, 39, 39)}
+  footer a{color:#666}
+  footer a:visited{color:#aaa}
+  footer a.on p{color:#fff}
+  footer a.onx p{color:#3B4FBD}
+  footer a.onx{background-color: #24B19F;}
+  .header, .coverphoto{background-color:#2E3440 ;}
+  #myCatat{background-color: #2E3440;}
+}
+.iconfloat{
+  position: fixed;
+  top: 6px;
+  right: 0px;
+}
+footer{max-width: 465px;}
+@media screen and (min-width: 480px){
+  body {
+    border: 1px solid #ddd;
+  }
+  .center-loader {
+    margin: 0 auto;
+    top: 10px;
+    position: absolute;
+    left: 45%;
+}
+td.hideonmobile{display: block;}
+.btn-ok{max-width: 430px; width: 100%;}
+}
+@media screen and (max-width: 480px){
+  .btn-ok{left: 2%;}
+}
+.mdl-textfield{width: 98%;}
+@media screen and (min-width: 640px){
+	.form-popup{max-width: 480px;}
+	#savetransaksi{max-width: 400px;}
+	.top-btn-save{max-width: 480px; width: 100%;}
+}
+
+</style>
+    </head>
+    <body>
+    <div id="modal-control" class="modal">
+      <div class="modal-content">
+        <div class="center-loader">
+            <img src="/static/loading-v2.svg" width=120px alt="loading larisse">
+        </div>
+</div></div>
+    <div>
+    <div id="massages">
+                <div class="container">
+                    {% if messages %}
+                        <ul class="alert alert-info margintop10">
+                            <button type="button" class="close right" data-dismiss="alert" aria-label="Close" onclick="closeMes()"><span aria-hidden="true">&times;</span></button>
+                            {% for message in messages %}
+                                {{ message }}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+    </div>
+    
+{% block content %} {% endblock %}
+    <footer>
+        <div class="containers">
+            <div class="row">
+                <div class="col-sm-3" style="max-width: 19%;flex-basis: 19%;">
+                    <a href="/web/store/uuid/{{ store.id }}/beranda/" {% if page == "beranda" %} class="on" {% endif %}><p> <i class="material-icons">holiday_village</i></p></a>
+                  
+                </div>
+                <div class="col-sm-3" style="max-width: 19%;flex-basis: 19%;">
+                <a href="/web/store/uuid/{{ store.id }}/transaksi/" {% if page == "transaksi" %} class="on" {% endif %}>
+                <p>
+                  <i class="material-icons">payments</i>
+                </p>
+                </a>  
+                </div>
+                <div class="col-sm-3" style="max-width: 19%;flex-basis: 19%; margin-top: -30px; margin-left: 0px;">
+                    <a href="/web/store/uuid/{{ store.id }}/catat/" class="onx" style="float: right; margin-right: 0px;"><p style="color:#fff"> <i class="material-icons">point_of_sale</i></p>
+                    
+                </div>
+                <div class="col-sm-3" style="max-width: 19%;flex-basis: 19%;margin-left: 6px;">
+                <a href="/web/store/uuid/{{ store.id }}/produk/" {% if page == "produk" %} class="on" {% endif %}>
+                <p>
+                  <i class="material-icons">dataset</i>
+                </p>
+                </a>   
+                </div>
+
+                <div class="col-sm-3" style="max-width: 19%;flex-basis: 19%;">
+                <a href="/web/store/uuid/{{ store.id }}/member/" {% if page == "member" %} class="on" {% endif %}>
+                <p>
+                    <i class="material-icons">supervised_user_circle</i>
+                </p>
+                </a>   
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+            <script defer src="{% static "js/material.min.js" %}"></script>
+            <script defer src="https://creativeit.github.io/getmdl-select/getmdl-select.min.js"></script>        
+        <script src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.min.js" crossorigin="anonymous"></script>
+        <script src="{% static "js/jquery-1.x-git.min.js" %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+<script type="text/javascript">
+  let dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  let bgTop = "#3B4FBD"
+  if(dark){
+	  bgTop =  '#2E3440'	
+  }
+  window.onload=window.onpageshow= function() {
+    document.getElementById("modal-control").style.display = "none";
+  };
+  //document.getElementById("modal-control").style.display = "none";
+window.oncontextmenu = function() {
+    if (event.button != 2 && !(event.clientX == event.clientY == 1)) {
+        event.preventDefault();
+    }
+}
+        let loadFile = function(event, output) {
+	        let image = document.getElementById(output);
+	        image.src = URL.createObjectURL(event.target.files[0]);
+        };
+
+        function errorCallback(request,textStatus,errorThrown){
+            alert('Oops. Something Wrong. Please try again in a few moment');    
+        }
+        function goBack() {
+            window.history.back();
+        }
+        function closeMes() {
+            document.getElementById("massages").style.display = "none";
+        }
+        // Jquery Dependency
+
+$("input[data-type='currency']").on({
+    keyup: function() {
+      formatCurrency($(this));
+    },
+    blur: function() { 
+      formatCurrency($(this), "blur");
+    }
+});
+
+
+function formatNumber(n) {
+  // format number 1000000 to 1,234,567
+  return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+}
+
+function alertSweet(tipe, text, deskripsi){
+	Swal.fire({
+  		title: text,
+  		text: deskripsi,
+  		icon: tipe,
+  		showConfirmButton: false,
+  		timer: 1500,
+  		timerProgressBar: true,
+  		onBeforeOpen: () => {$(".modal").hide();},
+	})
+}
+function myCopy(){
+  /* Get the text field */
+  var copyText = document.getElementById("myInput");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */
+  alertSweet("success", "Berhasil disalin", "Text sudah berhasil disalin ke clipboard")
+ 
+}
+function openModal(uuid) {  
+  document.querySelector('meta[name="theme-color"]').setAttribute('content',  '#FFFFFF');
+  window.scrollTo(0, 0);		
+  document.getElementById(uuid).style.display = "block";
+  bukaModal = true;
+  
+}
+
+function closeModal(uuid) {
+  document.getElementById(uuid).style.display = "none";
+  document.querySelector('meta[name="theme-color"]').setAttribute('content',  bgTop);
+}
+function showLoading(){
+  $(".modal").show();
+  return true
+}
+function formatCurrency(input, blur) {
+  // appends $ to value, validates decimal side
+  // and puts cursor back in right position.
+  
+  // get input value
+  var input_val = input.val();
+  
+  // don't validate empty input
+  if (input_val === "") { return; }
+  
+  // original length
+  var original_len = input_val.length;
+
+  // initial caret position 
+  var caret_pos = input.prop("selectionStart");
+    
+  // check for decimal
+  if (input_val.indexOf(",") >= 0) {
+
+    // get position of first decimal
+    // this prevents multiple decimals from
+    // being entered
+     decimal_pos = input_val.indexOf(",");
+
+    // split number by decimal point
+    var left_side = input_val.substring(0, decimal_pos);
+    var right_side = input_val.substring(decimal_pos);
+
+    // add commas to left side of number
+    left_side = formatNumber(left_side);
+
+    // validate right side
+    right_side = formatNumber(right_side);
+    
+    // On blur make sure 2 numbers after decimal
+    if (blur === "blur") {
+      right_side += "00";
+    }
+    
+    // Limit decimal to only 2 digits
+    right_side = right_side.substring(0, 2);
+
+    // join number by .
+    input_val = "Rp " + left_side;
+
+  } else {
+    input_val = formatNumber(input_val);
+    input_val = "Rp " + input_val;
+    
+    if (blur === "blur") {
+      input_val += "";
+    }
+  }
+  
+  // send updated string to input
+  input.val(input_val);
+
+  // put caret back in the right position
+  var updated_len = input_val.length;
+  caret_pos = updated_len - original_len + caret_pos;
+  input[0].setSelectionRange(caret_pos, caret_pos);
+}        
+        $(document).on("ready", function(){
+          $(document).on("click", "footer a, .menu-head a, a#showloading, a.showloading", function(){
+            $(".modal").show();
+            return true
+
+          });
+            
+           
+            $(document).on("click", "a#showbtn", function(){
+                    Swal.fire({
+                        title: 'sudah yakin nih?',
+                        text: "Mohon perhatikan kembali",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Lanjutkan'
+                    }).then((result) => {
+                    if (result.value) {
+                        ddd = $(this).attr("href");
+                        $(".modal").show();
+                        window.location = ddd;    
+                    } });
+                    return false;  
+                });
+            $("form").submit(function(){
+              if ($(this).attr("id") !== 'loginSms'){
+                 $(".modal").show();
+              }   
+                //if ($(this).attr("id") != 'register'){
+                //$("form").find("input.btn.btn-primary").attr('disabled','disabled'); 
+                // $("form").find("input.btn.btn-primary").html('<img src="/static/img/loadert.svg" style="width:16px"> Save');
+                //$("form").find("button").attr('disabled','disabled'); 
+                //$("form").find("button").html('<img src="/static/img/loadert.svg" style="width:16px"> Save');
+                //}else{
+                //    $('button.btn-ok').attr('disabled','disabled'); 
+	            //    $('button.btn-ok').html('<img src="/static/img/loadert.svg" style="width:16px"> Save');
+		
+                //}
+                //$(this).find(
+                //$(this).find("<p style='padding-top:50px'>Sedang Menyimpan Data....</p>")
+                
+
+            });
+            
+    })
+    const isInStandaloneMode = () =>
+      (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone) || document.referrer.includes('android-app://');
+
+    if (isInStandaloneMode()) {
+        console.log("ok")
+    }   
+   
+     
+    if ('serviceWorker' in navigator) {
+      console.log("Will service worker register?");
+      navigator.serviceWorker.register('/service-worker.js').then(function(reg){
+        console.log("Yes it did.");
+      }).catch(function(err) {
+        console.log("No it didn't. This happened: ", err)
+      });
+    }
+  </script>
+    {% block js %}
+
+    {% endblock %}
+    <script>
+      
+      if (dark) {
+        document.querySelector('meta[name="theme-color"]').setAttribute('content',  '#2E3440');
+      }
+    </script>
+     </body>
+  {% endspaceless %}
+ </html> 

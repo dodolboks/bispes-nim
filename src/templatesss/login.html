@@ -1,0 +1,45 @@
+{% extends "templates/base.html" %}
+{% block title %} Login {% endblock %}
+{% block css %} 
+<style>
+  @media (min-width: 992px) {
+    .grid>div:nth-of-type(2) {
+      display: block;
+    }
+    footer {position: absolute; bottom:0}
+  }
+  article div:nth-of-type(2) {
+    display: none;
+    background-color: #374956;
+    background-image: url(https://kursusapp.com/static/img/bg-video.png);
+    background-position: center;
+    background-size: cover;
+  }
+</style>
+{% endblock %}
+{% block content %}
+  <main class="container">
+    <article class="grid">
+      <div>
+        <hgroup>
+          <h1>Sign in </h1>
+          <h2>Log in to your account</h2>
+        </hgroup>
+        <form hx-post="/login/otp/" hx-push-url="true" hx-target="body" hx-ext="ajax-header" method="POST" action="/login/otp">
+        
+          <div class="did-floating-label-content">
+              <input class="did-floating-input" type="text" type="tel"
+                name="phone"
+                placeholder=" "
+                aria-label="No Whatsapp Anda"
+                required>
+          <label class="did-floating-label">Nomor Telp</label>
+        </div>
+          
+          <button type="submit" hx-confirm="Are you sure?">Login</button>
+        </form>
+      </div>
+      <div></div>
+    </article>
+  </main>
+{% endblock %} 
