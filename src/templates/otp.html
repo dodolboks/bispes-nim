@@ -1,0 +1,190 @@
+{% extends "templates/base.html" %}
+{% block title %} Kode OTP {% endblock %}
+{% block css %} 
+<style>
+h3{font-weight: 700; margin-top:30px}
+.img-close{margin-top:20px; display:block; margin-left:20px}
+.img-close a{color:#fff; font-size:24px}
+form{background:inherit; border: none; }
+.title-atas{color:#fff; font-weight:900; font-size:24px; margin-top:20px}
+.upload-image{
+position: absolute;
+width: 174px;
+height: 152px;
+left: 108px;
+top: 120px;
+border-radius:10px;
+background: #C4C4C4;
+}
+.upload-image .fa-camera{
+	font-size:40px;
+color: #FFFFFF;
+position: absolute;
+width: 40px;
+height: 40px;
+left: 65px;
+top: 60px;
+
+}
+#mane{
+	border: 1px solid var(--a-link-color);
+    padding: 10px 20px;
+    margin-top: 20px;
+    position: absolute;
+    border-radius: 4px;
+}
+.mdl-textfield{width:100%}
+.card2 {
+ background: #FFFFFF;
+border: 1px solid #ddd;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 4px;
+min-height:160px;
+font-weight:200;
+font-size:14px;
+width:100%;
+margin-bottom:10px;
+margin-top:-120px
+}
+footer{display:none} .btn-ok{position: fixed; bottom:10px; margin-bottom:0px}
+.hideon{display: none;}
+form{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: auto;
+		margin: 0 auto;
+}        
+input{
+			width: 55px;
+			height: 80px;
+			padding: 0;
+			margin-right: 25px;
+			text-align: center;
+			border: none;
+			font-size:2rem;
+            border-radius: 10px;
+background: linear-gradient(145deg, #d2d3d7, #f9faff);
+box-shadow:  4px 4px 9px #c6c7cb, 
+             -4px -4px 9px #ffffff;
+}    
+input:focus {
+  background-color: #eee;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+p{font-size:16px}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}		
+input:not([type]), [type="text"], [type="email"], [type="number"], [type="search"], [type="password"], [type="url"], [type="tel"], [type="checkbox"], [type="radio"], textarea, select{
+	border-radius:10px
+}
+</style>
+{% endblock %}
+
+{% block content %} 
+
+<div class="container">	
+	<div class="row">
+		<div class="col-sm-12">
+      <h3>Kode OTP</h3>
+			
+				<form action="/web/login/otp/verify/" method="POST" id="postno">
+				<p>		
+					<input id="codeBox1" type="number" maxlength="1" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)" />
+					<input id="codeBox2" type="number" maxlength="1" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)" />
+					<input id="codeBox3" type="number" maxlength="1" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)" />
+					<input id="codeBox4" type="number" maxlength="1" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)" />
+					<input id="codeBox5" type="number" maxlength="1" onkeyup="onKeyUpEvent(5, event)" onfocus="onFocusEvent(5)" />
+				<input type="hidden" name="verify" id="verify">  
+				<input type="hidden" name="telp" id="{{ telp }}" value="{{ telp }}">   
+				    
+				</p>
+		    </form>		
+		  <p>
+            Masukan kode otp yang telah kami kirim ke no HP/WA <strong>{{ telp }}</strong>
+          </p>
+		  
+		 
+		  <div id="countdown"></div> 
+		  <div class="hideon"><a href="/web/otp/" onclick="hideYo()" id="mane"> Kirim Ulang Kode</a></div> 
+		  
+          <p>{% if not validitas %}<div class="">Kode yang kamu masukan salah</div>{% endif %}<p>
+				<br><br>
+				<button type=submit class="btn-ok">Kirim</button>
+		</div>		
+	</div>	
+</div>
+ {% endblock %}
+
+ {% block js %} 
+ <script>
+	document.querySelector('meta[name="theme-color"]').setAttribute('content',  '#f8f8f8');
+	{% if not validitas %}
+		alertSweet("warning", "Kode OTP Salah", "Kode OTP yang kamu masukan salah. Coba cek lagi kodemu");
+	{% endif %}	
+    function hideYo(){
+      $("a#mane").hide();
+    }
+	var timeleft = 90;
+var downloadTimer = setInterval(function(){
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+	$(".hideon").show();
+	$("#countdown").hide();
+    //document.getElementById("countdown").innerHTML = "Finished";
+  } else {
+    document.getElementById("countdown").innerHTML = "<span style=color:red>"+timeleft+"</span> detik lagi untuk mengirim ulang kode";
+  }
+  timeleft -= 1;
+}, 1000);
+
+
+function getCodeBoxElement(index) {
+  return document.getElementById('codeBox' + index);
+}
+function onKeyUpEvent(index, event) {
+  const eventCode = event.which || event.keyCode;
+  if (getCodeBoxElement(index).value.length === 1) {
+	 if (index !== 5) {
+		  getCodeBoxElement(index+ 1).focus();
+	 } else {
+		  getCodeBoxElement(index).blur();
+		  dob = $("input#codeBox1").val()
+      dob2 = $("input#codeBox2").val()
+      dob3 = $("input#codeBox3").val()
+      dob4 = $("input#codeBox4").val()
+	  dob5 = $("input#codeBox5").val()
+      tota = dob + dob2 + dob3 + dob4 + dob5
+	  
+      $("input#verify").val(tota);
+      
+	 }
+  }
+  if (eventCode === 8 && index !== 1) {
+	 getCodeBoxElement(index - 1).focus();
+  }
+}
+function onFocusEvent(index) {
+  for (item = 1; item < index; item++) {
+	 const currentElement = getCodeBoxElement(item);
+	 if (!currentElement.value) {
+		  currentElement.focus();
+		  break;
+	 }
+  }
+}
+$("button.btn-ok").click(function(){
+  $("form#postno").submit();
+})
+
+
+ </script>
+
+
+ {% endblock %}

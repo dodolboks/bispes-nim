@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "templates/base.html" %}
 {% block title %} 500 {% endblock %}
 {% block meta %}
 <meta name="theme-color" content="#FFFFFF" />
@@ -50,14 +50,7 @@ p{text-align:center}
 </style>
 <script>
 
-{% if ulangi %}
-let paksa_login = true 
-{% else %}
-let paksa_login = false 
-{% endif %}
 
-
-var ddd = "{{ ulangi }}"
 </script>
 {% endblock %}
 

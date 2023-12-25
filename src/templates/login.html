@@ -1,4 +1,4 @@
-{% extends "templates/base.html" %}
+{% extends templates/base.html %}
 {% block title %} Login {% endblock %}
 {% block meta %}
 <meta name="theme-color" content="#FFFFFF" />
@@ -77,7 +77,7 @@ var ddd = "{{ ulangi }}"
 	  <div class="row">
 		<div class="col-sm-12">
   		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    		<input class="mdl-textfield__input" type="text" id="phone" name="phone" {% if telp %} value="{{ telp }}" {% endif %}>
+    		<input class="mdl-textfield__input" type="text" id="phone" name="phone">
     		<label class="mdl-textfield__label" for="store">No Telp Aktif </label>
   		</div>	
 		</div>	
@@ -99,7 +99,7 @@ var ddd = "{{ ulangi }}"
 			<div class="row">
 		  		<div class="col-sm-12">
 			 		  <div class="img-close">
-				   		<a href="/web/sms/login/"><i class="material-icons" style="color:#444">close</i></a>
+				   		<a href="/web/login/"><i class="material-icons" style="color:#444">close</i></a>
 			  		</div>	 
 		  		</div>
 		  		<div class="col-sm-11">
@@ -118,7 +118,7 @@ var ddd = "{{ ulangi }}"
   </div>
 </div>
 <div class="hide">
-  <form action="." method="POST" id="postLogin">{% csrf_token %}
+  <form action="." method="POST" id="postLogin">
     <input type="hidden" id="telpHidden" name="telp">
     <input type="hidden" id="kodepHidden" name="kode">
     <input type="hidden" id="creHidden" name="credential">
@@ -236,7 +236,7 @@ $("form#loginSms").submit(function(){
     return validateForm()
 
 }); 
-{% if telp %}
+{% if telp != "" %}
   $("input#phone").focus()
 	$("input#phone").parent().attr("class", "mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-upgraded is-dirty")
 

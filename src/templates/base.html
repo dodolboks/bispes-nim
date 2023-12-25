@@ -6,13 +6,15 @@
         <meta charset="utf-8">
         <title> {% block title %} {% endblock %} | Bispes </title>
         <link rel="icon" type="image/x-icon" href="/static/logo/bispes-32.png">
-        <meta name="description" content="{{ store.title }}"/>
+        <meta name="description" content="{% block description %} {% endblock %}"/>
         {% block theme %} {% endblock %}
         <meta name="theme-color" content="#3B4FBD" />
         <meta name="google" content="notranslate">
 
         <meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=1.0" name="viewport">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css" />
+        <link rel="preload" href="/static/css/material.indigo-deep_purple.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        
         <link rel="stylesheet" href="/static/css/extra.css">
         <link rel="preload" href="https://unpkg.com/@glidejs/glide@3.4.1/dist/css/glide.core.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://unpkg.com/@glidejs/glide@3.4.1/dist/css/glide.core.min.css"></noscript>
@@ -56,7 +58,7 @@ footer{max-width: 465px;}
     left: 45%;
 }
 td.hideonmobile{display: block;}
-.btn-ok{max-width: 430px; width: 100%;}
+.btn-ok{max-width: 450px; width: 100%;}
 }
 @media screen and (max-width: 480px){
   .btn-ok{left: 2%;}
@@ -78,61 +80,12 @@ td.hideonmobile{display: block;}
         </div>
 </div></div>
     <div>
-    <div id="massages">
-                <div class="container">
-                    {% if messages %}
-                        <ul class="alert alert-info margintop10">
-                            <button type="button" class="close right" data-dismiss="alert" aria-label="Close" onclick="closeMes()"><span aria-hidden="true">&times;</span></button>
-                            {% for message in messages %}
-                                {{ message }}
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                </div>
-    </div>
     
 {% block content %} {% endblock %}
-    <footer>
-        <div class="containers">
-            <div class="row">
-                <div class="col-sm-3" style="max-width: 19%;flex-basis: 19%;">
-                    <a href="/web/store/uuid/{{ store.id }}/beranda/" {% if page == "beranda" %} class="on" {% endif %}><p> <i class="material-icons">holiday_village</i></p></a>
-                  
-                </div>
-                <div class="col-sm-3" style="max-width: 19%;flex-basis: 19%;">
-                <a href="/web/store/uuid/{{ store.id }}/transaksi/" {% if page == "transaksi" %} class="on" {% endif %}>
-                <p>
-                  <i class="material-icons">payments</i>
-                </p>
-                </a>  
-                </div>
-                <div class="col-sm-3" style="max-width: 19%;flex-basis: 19%; margin-top: -30px; margin-left: 0px;">
-                    <a href="/web/store/uuid/{{ store.id }}/catat/" class="onx" style="float: right; margin-right: 0px;"><p style="color:#fff"> <i class="material-icons">point_of_sale</i></p>
-                    
-                </div>
-                <div class="col-sm-3" style="max-width: 19%;flex-basis: 19%;margin-left: 6px;">
-                <a href="/web/store/uuid/{{ store.id }}/produk/" {% if page == "produk" %} class="on" {% endif %}>
-                <p>
-                  <i class="material-icons">dataset</i>
-                </p>
-                </a>   
-                </div>
-
-                <div class="col-sm-3" style="max-width: 19%;flex-basis: 19%;">
-                <a href="/web/store/uuid/{{ store.id }}/member/" {% if page == "member" %} class="on" {% endif %}>
-                <p>
-                    <i class="material-icons">supervised_user_circle</i>
-                </p>
-                </a>   
-                </div>
-                
-            </div>
-        </div>
-    </footer>
-            <script defer src="{% static "js/material.min.js" %}"></script>
+            <script defer src="/static/js/material.min.js"></script>
             <script defer src="https://creativeit.github.io/getmdl-select/getmdl-select.min.js"></script>        
         <script src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.min.js" crossorigin="anonymous"></script>
-        <script src="{% static "js/jquery-1.x-git.min.js" %}"></script>
+        <script src="/static/js/jquery-1.x-git.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <script type="text/javascript">
@@ -358,5 +311,5 @@ function formatCurrency(input, blur) {
       }
     </script>
      </body>
-  {% endspaceless %}
+
  </html> 

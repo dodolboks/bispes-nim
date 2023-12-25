@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "templates/base.html" %}
 {% block title %} Login {% endblock %}
 {% block meta %}
 <meta name="theme-color" content="#FFFFFF" />
@@ -71,7 +71,7 @@ var ddd = "{{ ulangi }}"
    <div class="col-sm-12">
     <p align="center">   <h3>Masuk Dulu</h3></p>
   </div>
-			<form action="." method="POST" autocomplete="off" id="loginSms">{% csrf_token %}
+			<form action="/web/login/wa/" method="POST" autocomplete="off" id="loginSms">
 				<div class="row">
 				<div class="col-sm-12">
   				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

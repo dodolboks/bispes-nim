@@ -1,0 +1,37 @@
+    <footer>
+        <div class="containers">
+            <div class="row">
+                <div class="col-sm-3" style="max-width: 19%;flex-basis: 19%;">
+                    <a href="/web/store/uuid/{{ store.id }}/beranda/" {% if page == "beranda" %} class="on" {% endif %}><p> <i class="material-icons">holiday_village</i></p></a>
+                  
+                </div>
+                <div class="col-sm-3" style="max-width: 19%;flex-basis: 19%;">
+                <a href="/web/store/uuid/{{ store.id }}/transaksi/" {% if page == "transaksi" %} class="on" {% endif %}>
+                <p>
+                  <i class="material-icons">payments</i>
+                </p>
+                </a>  
+                </div>
+                <div class="col-sm-3" style="max-width: 19%;flex-basis: 19%; margin-top: -30px; margin-left: 0px;">
+                    <a href="/web/store/uuid/{{ store.id }}/catat/" class="onx" style="float: right; margin-right: 0px;"><p style="color:#fff"> <i class="material-icons">point_of_sale</i></p>
+                    
+                </div>
+                <div class="col-sm-3" style="max-width: 19%;flex-basis: 19%;margin-left: 6px;">
+                <a href="/web/store/uuid/{{ store.id }}/produk/" {% if page == "produk" %} class="on" {% endif %}>
+                <p>
+                  <i class="material-icons">dataset</i>
+                </p>
+                </a>   
+                </div>
+
+                <div class="col-sm-3" style="max-width: 19%;flex-basis: 19%;">
+                <a href="/web/store/uuid/{{ store.id }}/member/" {% if page == "member" %} class="on" {% endif %}>
+                <p>
+                    <i class="material-icons">supervised_user_circle</i>
+                </p>
+                </a>   
+                </div>
+                
+            </div>
+        </div>
+    </footer>
